@@ -2,13 +2,28 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>974</width>
-    <height>656</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -17,14 +32,26 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>-10</x>
       <y>0</y>
-      <width>971</width>
-      <height>601</height>
+      <width>811</width>
+      <height>571</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>16</height>
+     </size>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -35,9 +62,18 @@
        <rect>
         <x>0</x>
         <y>270</y>
-        <width>961</width>
-        <height>301</height>
+        <width>981</width>
+        <height>281</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
       </property>
       <property name="currentIndex">
        <number>2</number>
@@ -49,81 +85,129 @@
        <widget class="QLineEdit" name="RS22">
         <property name="geometry">
          <rect>
-          <x>640</x>
-          <y>150</y>
-          <width>31</width>
-          <height>31</height>
+          <x>470</x>
+          <y>140</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RS01">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>50</y>
-          <width>31</width>
-          <height>31</height>
+          <x>420</x>
+          <y>40</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RS00">
         <property name="geometry">
          <rect>
-          <x>560</x>
-          <y>50</y>
-          <width>31</width>
-          <height>31</height>
+          <x>370</x>
+          <y>40</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RS20">
         <property name="geometry">
          <rect>
-          <x>560</x>
-          <y>150</y>
-          <width>31</width>
-          <height>31</height>
+          <x>370</x>
+          <y>140</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RS11">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>100</y>
-          <width>31</width>
-          <height>31</height>
+          <x>420</x>
+          <y>90</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RS21">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>150</y>
-          <width>31</width>
-          <height>31</height>
+          <x>420</x>
+          <y>140</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RS10">
         <property name="geometry">
          <rect>
-          <x>560</x>
-          <y>100</y>
-          <width>31</width>
-          <height>31</height>
+          <x>370</x>
+          <y>90</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLabel" name="label_3">
         <property name="geometry">
          <rect>
-          <x>460</x>
+          <x>230</x>
           <y>110</y>
-          <width>91</width>
+          <width>131</width>
           <height>21</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+         </font>
         </property>
         <property name="text">
          <string>Matriz resultante:</string>
@@ -132,31 +216,52 @@
        <widget class="QLineEdit" name="RS12">
         <property name="geometry">
          <rect>
-          <x>640</x>
-          <y>100</y>
-          <width>31</width>
-          <height>31</height>
+          <x>470</x>
+          <y>90</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RS02">
         <property name="geometry">
          <rect>
-          <x>640</x>
-          <y>50</y>
-          <width>31</width>
-          <height>31</height>
+          <x>470</x>
+          <y>40</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QPushButton" name="btnSuma">
         <property name="geometry">
          <rect>
-          <x>220</x>
-          <y>100</y>
-          <width>131</width>
-          <height>41</height>
+          <x>80</x>
+          <y>90</y>
+          <width>141</width>
+          <height>51</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(141, 141, 141);</string>
         </property>
         <property name="text">
          <string>Sumar matrices</string>
@@ -170,81 +275,132 @@
        <widget class="QLineEdit" name="RR01">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>50</y>
-          <width>31</width>
-          <height>31</height>
+          <x>420</x>
+          <y>40</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RR00">
         <property name="geometry">
          <rect>
-          <x>560</x>
-          <y>50</y>
-          <width>31</width>
-          <height>31</height>
+          <x>370</x>
+          <y>40</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RR22">
         <property name="geometry">
          <rect>
-          <x>640</x>
-          <y>150</y>
-          <width>31</width>
-          <height>31</height>
+          <x>470</x>
+          <y>140</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RR20">
         <property name="geometry">
          <rect>
-          <x>560</x>
-          <y>150</y>
-          <width>31</width>
-          <height>31</height>
+          <x>370</x>
+          <y>140</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RR11">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>100</y>
-          <width>31</width>
-          <height>31</height>
+          <x>420</x>
+          <y>90</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RR21">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>150</y>
-          <width>31</width>
-          <height>31</height>
+          <x>420</x>
+          <y>140</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RR10">
         <property name="geometry">
          <rect>
-          <x>560</x>
-          <y>100</y>
-          <width>31</width>
-          <height>31</height>
+          <x>370</x>
+          <y>90</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QPushButton" name="btnResta">
         <property name="geometry">
          <rect>
-          <x>220</x>
-          <y>100</y>
-          <width>131</width>
-          <height>41</height>
+          <x>80</x>
+          <y>90</y>
+          <width>141</width>
+          <height>51</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(141, 141, 141);</string>
         </property>
         <property name="text">
          <string>Restar matrices</string>
@@ -253,11 +409,17 @@
        <widget class="QLabel" name="label_4">
         <property name="geometry">
          <rect>
-          <x>460</x>
+          <x>230</x>
           <y>110</y>
-          <width>91</width>
+          <width>131</width>
           <height>21</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+         </font>
         </property>
         <property name="text">
          <string>Matriz resultante:</string>
@@ -266,21 +428,33 @@
        <widget class="QLineEdit" name="RR12">
         <property name="geometry">
          <rect>
-          <x>640</x>
-          <y>100</y>
-          <width>31</width>
-          <height>31</height>
+          <x>470</x>
+          <y>90</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RR02">
         <property name="geometry">
          <rect>
-          <x>640</x>
-          <y>50</y>
-          <width>31</width>
-          <height>31</height>
+          <x>470</x>
+          <y>40</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
       </widget>
@@ -291,11 +465,20 @@
        <widget class="QPushButton" name="btnMultiplicar">
         <property name="geometry">
          <rect>
-          <x>220</x>
-          <y>100</y>
-          <width>131</width>
-          <height>41</height>
+          <x>80</x>
+          <y>90</y>
+          <width>141</width>
+          <height>51</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(141, 141, 141);</string>
         </property>
         <property name="text">
          <string>Multiplicar matrices</string>
@@ -304,91 +487,145 @@
        <widget class="QLineEdit" name="RM10">
         <property name="geometry">
          <rect>
-          <x>560</x>
-          <y>100</y>
-          <width>31</width>
-          <height>31</height>
+          <x>370</x>
+          <y>90</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RM00">
         <property name="geometry">
          <rect>
-          <x>560</x>
-          <y>50</y>
-          <width>31</width>
-          <height>31</height>
+          <x>370</x>
+          <y>40</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RM01">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>50</y>
-          <width>31</width>
-          <height>31</height>
+          <x>420</x>
+          <y>40</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RM02">
         <property name="geometry">
          <rect>
-          <x>640</x>
-          <y>50</y>
-          <width>31</width>
-          <height>31</height>
+          <x>470</x>
+          <y>40</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RM22">
         <property name="geometry">
          <rect>
-          <x>640</x>
-          <y>150</y>
-          <width>31</width>
-          <height>31</height>
+          <x>470</x>
+          <y>140</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RM12">
         <property name="geometry">
          <rect>
-          <x>640</x>
-          <y>100</y>
-          <width>31</width>
-          <height>31</height>
+          <x>470</x>
+          <y>90</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RM11">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>100</y>
-          <width>31</width>
-          <height>31</height>
+          <x>420</x>
+          <y>90</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RM20">
         <property name="geometry">
          <rect>
-          <x>560</x>
-          <y>150</y>
-          <width>31</width>
-          <height>31</height>
+          <x>370</x>
+          <y>140</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLabel" name="label_5">
         <property name="geometry">
          <rect>
-          <x>460</x>
+          <x>230</x>
           <y>110</y>
-          <width>91</width>
+          <width>131</width>
           <height>21</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+         </font>
         </property>
         <property name="text">
          <string>Matriz resultante:</string>
@@ -397,11 +634,17 @@
        <widget class="QLineEdit" name="RM21">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>150</y>
-          <width>31</width>
-          <height>31</height>
+          <x>420</x>
+          <y>140</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
       </widget>
@@ -409,11 +652,17 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>120</y>
+        <x>70</x>
+        <y>130</y>
         <width>71</width>
         <height>21</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>Matriz A:</string>
@@ -422,101 +671,140 @@
      <widget class="QLineEdit" name="AA00">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>60</y>
-        <width>31</width>
-        <height>31</height>
+        <x>150</x>
+        <y>70</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LayoutDirection::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
      <widget class="QLineEdit" name="AA10">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>110</y>
-        <width>31</width>
-        <height>31</height>
+        <x>150</x>
+        <y>120</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AA20">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>160</y>
-        <width>31</width>
-        <height>31</height>
+        <x>150</x>
+        <y>170</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AA01">
       <property name="geometry">
        <rect>
-        <x>340</x>
-        <y>60</y>
-        <width>31</width>
-        <height>31</height>
+        <x>200</x>
+        <y>70</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AA11">
       <property name="geometry">
        <rect>
-        <x>340</x>
-        <y>110</y>
-        <width>31</width>
-        <height>31</height>
+        <x>200</x>
+        <y>120</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AA21">
       <property name="geometry">
        <rect>
-        <x>340</x>
-        <y>160</y>
-        <width>31</width>
-        <height>31</height>
+        <x>200</x>
+        <y>170</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AA12">
       <property name="geometry">
        <rect>
-        <x>380</x>
-        <y>110</y>
-        <width>31</width>
-        <height>31</height>
+        <x>250</x>
+        <y>120</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AA02">
       <property name="geometry">
        <rect>
-        <x>380</x>
-        <y>60</y>
-        <width>31</width>
-        <height>31</height>
+        <x>250</x>
+        <y>70</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AA22">
       <property name="geometry">
        <rect>
-        <x>380</x>
-        <y>160</y>
-        <width>31</width>
-        <height>31</height>
+        <x>250</x>
+        <y>170</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>120</y>
+        <x>400</x>
+        <y>130</y>
         <width>71</width>
         <height>21</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>Matriz B:</string>
@@ -525,91 +813,118 @@
      <widget class="QLineEdit" name="AB11">
       <property name="geometry">
        <rect>
-        <x>600</x>
-        <y>110</y>
-        <width>31</width>
-        <height>31</height>
+        <x>530</x>
+        <y>120</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AB01">
       <property name="geometry">
        <rect>
-        <x>600</x>
-        <y>60</y>
-        <width>31</width>
-        <height>31</height>
+        <x>530</x>
+        <y>70</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AB22">
       <property name="geometry">
        <rect>
-        <x>640</x>
-        <y>160</y>
-        <width>31</width>
-        <height>31</height>
+        <x>580</x>
+        <y>170</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AB00">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>60</y>
-        <width>31</width>
-        <height>31</height>
+        <x>480</x>
+        <y>70</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AB10">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>110</y>
-        <width>31</width>
-        <height>31</height>
+        <x>480</x>
+        <y>120</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AB12">
       <property name="geometry">
        <rect>
-        <x>640</x>
-        <y>110</y>
-        <width>31</width>
-        <height>31</height>
+        <x>580</x>
+        <y>120</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AB21">
       <property name="geometry">
        <rect>
-        <x>600</x>
-        <y>160</y>
-        <width>31</width>
-        <height>31</height>
+        <x>530</x>
+        <y>170</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AB20">
       <property name="geometry">
        <rect>
-        <x>560</x>
-        <y>160</y>
-        <width>31</width>
-        <height>31</height>
+        <x>480</x>
+        <y>170</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AB02">
       <property name="geometry">
        <rect>
-        <x>640</x>
-        <y>60</y>
-        <width>31</width>
-        <height>31</height>
+        <x>580</x>
+        <y>70</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
     </widget>
@@ -620,11 +935,17 @@
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>110</y>
+        <x>260</x>
+        <y>140</y>
         <width>71</width>
         <height>21</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
       </property>
       <property name="text">
        <string>Matriz A:</string>
@@ -633,91 +954,118 @@
      <widget class="QLineEdit" name="AO11">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>100</y>
-        <width>31</width>
-        <height>31</height>
+        <x>390</x>
+        <y>120</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AO01">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>50</y>
-        <width>31</width>
-        <height>31</height>
+        <x>390</x>
+        <y>70</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AO22">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>150</y>
-        <width>31</width>
-        <height>31</height>
+        <x>440</x>
+        <y>170</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AO00">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>50</y>
-        <width>31</width>
-        <height>31</height>
+        <x>340</x>
+        <y>70</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AO10">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>100</y>
-        <width>31</width>
-        <height>31</height>
+        <x>340</x>
+        <y>120</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AO12">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>100</y>
-        <width>31</width>
-        <height>31</height>
+        <x>440</x>
+        <y>120</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AO21">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>150</y>
-        <width>31</width>
-        <height>31</height>
+        <x>390</x>
+        <y>170</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AO20">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>150</y>
-        <width>31</width>
-        <height>31</height>
+        <x>340</x>
+        <y>170</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="AO02">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>50</y>
-        <width>31</width>
-        <height>31</height>
+        <x>440</x>
+        <y>70</y>
+        <width>41</width>
+        <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(108, 108, 108);</string>
       </property>
      </widget>
      <widget class="QTabWidget" name="tabWidget_3">
@@ -729,6 +1077,15 @@
         <height>301</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -739,81 +1096,129 @@
        <widget class="QLineEdit" name="RI22">
         <property name="geometry">
          <rect>
-          <x>640</x>
-          <y>150</y>
-          <width>31</width>
-          <height>31</height>
+          <x>440</x>
+          <y>140</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RI01">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>50</y>
-          <width>31</width>
-          <height>31</height>
+          <x>390</x>
+          <y>40</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RI00">
         <property name="geometry">
          <rect>
-          <x>560</x>
-          <y>50</y>
-          <width>31</width>
-          <height>31</height>
+          <x>340</x>
+          <y>40</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RI20">
         <property name="geometry">
          <rect>
-          <x>560</x>
-          <y>150</y>
-          <width>31</width>
-          <height>31</height>
+          <x>340</x>
+          <y>140</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RI11">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>100</y>
-          <width>31</width>
-          <height>31</height>
+          <x>390</x>
+          <y>90</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RI21">
         <property name="geometry">
          <rect>
-          <x>600</x>
-          <y>150</y>
-          <width>31</width>
-          <height>31</height>
+          <x>390</x>
+          <y>140</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RI10">
         <property name="geometry">
          <rect>
-          <x>560</x>
-          <y>100</y>
-          <width>31</width>
-          <height>31</height>
+          <x>340</x>
+          <y>90</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLabel" name="label_7">
         <property name="geometry">
          <rect>
-          <x>460</x>
-          <y>110</y>
-          <width>91</width>
+          <x>200</x>
+          <y>100</y>
+          <width>131</width>
           <height>21</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+         </font>
         </property>
         <property name="text">
          <string>Matriz resultante:</string>
@@ -822,31 +1227,52 @@
        <widget class="QLineEdit" name="RI12">
         <property name="geometry">
          <rect>
-          <x>640</x>
-          <y>100</y>
-          <width>31</width>
-          <height>31</height>
+          <x>440</x>
+          <y>90</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLineEdit" name="RI02">
         <property name="geometry">
          <rect>
-          <x>640</x>
-          <y>50</y>
-          <width>31</width>
-          <height>31</height>
+          <x>440</x>
+          <y>40</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(108, 108, 108);</string>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QPushButton" name="btnMatrizInversa">
         <property name="geometry">
          <rect>
-          <x>220</x>
-          <y>100</y>
-          <width>131</width>
-          <height>41</height>
+          <x>40</x>
+          <y>90</y>
+          <width>151</width>
+          <height>51</height>
          </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(141, 141, 141);</string>
         </property>
         <property name="text">
          <string>Calcular matriz inversa</string>
@@ -862,7 +1288,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>974</width>
+     <width>800</width>
      <height>33</height>
     </rect>
    </property>
