@@ -178,8 +178,6 @@ class MetodosNumericos(QMainWindow):
                     self.advertencia("Las matrices solo aceptan valores numéricos")
                     return
         
-        det = self.determinante()
-        
         diagonales_principales = (
         a[0][0] * a[1][1] * a[2][2] +
         a[1][0] * a[2][1] * a[0][2] +
@@ -275,7 +273,7 @@ class MetodosNumericos(QMainWindow):
                 a[i][2] = float(Z_txt)      
                 c[i][0] = float(I_txt)
             except Exception:
-                self.advertencia("Las matrices solo aceptan valores numéricos")
+                self.advertencia("En un sistema de ecuaciones lineales solo se aceptan valores numéricos")
                 return
         
         diagonales_principales = (

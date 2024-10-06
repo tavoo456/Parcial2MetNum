@@ -2075,7 +2075,7 @@
          <string>z =</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="btnLimpiarOM_2">
+       <widget class="QPushButton" name="btnLimpiarEQ">
         <property name="geometry">
          <rect>
           <x>160</x>
