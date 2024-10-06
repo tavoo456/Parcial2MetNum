@@ -8,12 +8,15 @@ class MetodosNumericos(QMainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.btnSuma.clicked.connect(self.sumarMatriz)
-        self.ui.btnResta.clicked.connect(self.restarMatriz)
-        self.ui.btnMultiplicar.clicked.connect(self.multiplicarMatriz)
+        self.ui.btnSuma.clicked.connect(self.sumar_matriz)
+        self.ui.btnResta.clicked.connect(self.restar_matriz)
+        self.ui.btnMultiplicar.clicked.connect(self.multiplicar_matriz)
         self.ui.btnMatrizInversa.clicked.connect(self.determinante)
-        self.ui.btnMatrizInversa.clicked.connect(self.matrizInversa)
+        self.ui.btnMatrizInversa.clicked.connect(self.matriz_inversa)
         self.ui.btnSistemaDeEcuaciones.clicked.connect(self.sistema_ecuaciones)
+        self.ui.btnLimpiarA.clicked.connect(self.limpiar_matrices_A)
+        self.ui.btnLimpiarOM.clicked.connect(self.limpiar_matrices_OM)
+        self.ui.btnLimpiarEQ.clicked.connect(self.limpiar_EQ)
         self.center()
     
     #Esta función centra el form en la pantalla
@@ -27,36 +30,52 @@ class MetodosNumericos(QMainWindow):
         
         self.move(x, y)
     
-    def InicializarMatriz(self, lista):
+    def inicializar_matriz(self, lista):
         for i in range(3):
             for j in range(3):
                 lista.append([0]*3)
     
-    def sumarMatriz(self):
-        a = []
-        b = []
-        c = []
-        self.InicializarMatriz(a)
-        self.InicializarMatriz(b)
-        self.InicializarMatriz(c)
-        
-        for i in range(3):
-            for j in range(3):
-                a[i][j] = float(getattr(self.ui, f'AA{i}{j}').text())
-                b[i][j] = float(getattr(self.ui, f'AB{i}{j}').text())
-        
-        for i in range(3):
-            for j in range(3):
-                c[i][j] = a[i][j] + b[i][j]
-                getattr(self.ui, f'RS{i}{j}').setText(str(c[i][j]))
+    def advertencia(self):
+        dialogo = QMessageBox()
+        dialogo.setIcon(QMessageBox.Warning)
+        dialogo.setWindowTitle("Advertencia")
+        dialogo.setText("Complete todos los campos")
+        dialogo.setStandardButtons(QMessageBox.Ok)
+        dialogo.exec()
     
-    def restarMatriz(self):
+    def limpiar_matrices_A(self):
+        for i in range(3):
+            for j in range(3):
+                getattr(self.ui, f'AA{i}{j}').setText("")
+                getattr(self.ui, f'AB{i}{j}').setText("")
+                getattr(self.ui, f'RS{i}{j}').setText("")
+                getattr(self.ui, f'RR{i}{j}').setText("")
+                getattr(self.ui, f'RM{i}{j}').setText("")
+    
+    def limpiar_matrices_OM(self):
+        for i in range(3):
+            for j in range(3):
+                getattr(self.ui, f'AO{i}{j}').setText("")
+                getattr(self.ui, f'RI{i}{j}').setText("")
+    
+    def limpiar_EQ(self):
+        for i in range(3):
+            getattr(self.ui, f'XEQ{i + 1}').setText("")
+            getattr(self.ui, f'YEQ{i + 1}').setText("")
+            getattr(self.ui, f'ZEQ{i + 1}').setText("")
+            getattr(self.ui, f'IEQ{i + 1}').setText("")
+        
+        self.ui.lblX.setText("x = ")
+        self.ui.lblY.setText("y = ")
+        self.ui.lblZ.setText("z = ")
+    
+    def sumar_matriz(self):
         a = []
         b = []
         c = []
-        self.InicializarMatriz(a)
-        self.InicializarMatriz(b)
-        self.InicializarMatriz(c)
+        self.inicializar_matriz(a)
+        self.inicializar_matriz(b)
+        self.inicializar_matriz(c)
         
         validar = True
         
@@ -64,9 +83,39 @@ class MetodosNumericos(QMainWindow):
             for j in range(3):
                 a_txt = getattr(self.ui, f'AA{i}{j}').text().strip()
                 b_txt = getattr(self.ui, f'AB{i}{j}').text().strip()
+                
                 if not a_txt or not b_txt:
-                    self.Advertencia()
+                    self.advertencia()
+                    return
+                
+                a[i][j] = float(a_txt)
+                b[i][j] = float(b_txt)
+
+        if(validar):
+            for i in range(3):
+                for j in range(3):
+                    c[i][j] = a[i][j] + b[i][j]
+                    getattr(self.ui, f'RS{i}{j}').setText(str(c[i][j]))
+    
+    def restar_matriz(self):
+        a = []
+        b = []
+        c = []
+        self.inicializar_matriz(a)
+        self.inicializar_matriz(b)
+        self.inicializar_matriz(c)
+        
+        validar = True
+        
+        for i in range(3):
+            for j in range(3):
+                a_txt = getattr(self.ui, f'AA{i}{j}').text().strip()
+                b_txt = getattr(self.ui, f'AB{i}{j}').text().strip()
+                
+                if not a_txt or not b_txt:
+                    self.advertencia()
                     return  
+                
                 a[i][j] = float(a_txt)
                 b[i][j] = float(b_txt)
         
@@ -76,41 +125,50 @@ class MetodosNumericos(QMainWindow):
                     c[i][j] = a[i][j] + (-1) * b[i][j]
                     getattr(self.ui, f'RR{i}{j}').setText(str(c[i][j]))
     
-    def Advertencia(self):
-        dialogo = QMessageBox()
-        dialogo.setIcon(QMessageBox.Warning)
-        dialogo.setWindowTitle("Advertencia")
-        dialogo.setText("Complete todos los campos")
-        dialogo.setStandardButtons(QMessageBox.Ok)
-        dialogo.exec() 
-    
-    def multiplicarMatriz(self):
+    def multiplicar_matriz(self):
         a = []
         b = []
         c = []
-        self.InicializarMatriz(a)
-        self.InicializarMatriz(b)
-        self.InicializarMatriz(c)
+        self.inicializar_matriz(a)
+        self.inicializar_matriz(b)
+        self.inicializar_matriz(c)
+        
+        validar = True
         
         for i in range(3):
             for j in range(3):
-                a[i][j] = float(getattr(self.ui, f'AA{i}{j}').text())
-                b[i][j] = float(getattr(self.ui, f'AB{i}{j}').text())
+                a_txt = getattr(self.ui, f'AA{i}{j}').text().strip()
+                b_txt = getattr(self.ui, f'AB{i}{j}').text().strip()
+                
+                if not a_txt or not b_txt:
+                    self.advertencia()
+                    return  
+                
+                a[i][j] = float(a_txt)
+                b[i][j] = float(b_txt)
         
-        for i in range(3):
-            for j in range(3):
-                for k in range(3):
-                    c[i][j] += a[i][k] * b[k][j]
-                    getattr(self.ui, f'RM{i}{j}').setText(str(c[i][j]))
+        if(validar):
+            for i in range(3):
+                for j in range(3):
+                    for k in range(3):
+                        c[i][j] += a[i][k] * b[k][j]
+                        getattr(self.ui, f'RM{i}{j}').setText(str(c[i][j]))
     
     #Funciones Para Calcular Matriz Inversa
     def determinante(self):
         a = []
-        self.InicializarMatriz(a)
+        self.inicializar_matriz(a)
         
         for i in range(3):
             for j in range(3):
-                a[i][j] = float(getattr(self.ui, f'AO{i}{j}').text())
+                a_txt = getattr(self.ui, f'AO{i}{j}').text().strip()
+                
+                if not a_txt:
+                    return
+                
+                a[i][j] = float(a_txt)
+        
+        det = self.determinante()
         
         diagonales_principales = (
         a[0][0] * a[1][1] * a[2][2] +
@@ -127,19 +185,25 @@ class MetodosNumericos(QMainWindow):
         det = diagonales_principales -  diagonales_secundarias
         return det
     
-    def matrizInversa(self):
+    def matriz_inversa(self):
         a = []
         aC = []
         aCT = []
         mI = []
-        self.InicializarMatriz(a)
-        self.InicializarMatriz(aC)
-        self.InicializarMatriz(aCT)
-        self.InicializarMatriz(mI)
+        self.inicializar_matriz(a)
+        self.inicializar_matriz(aC)
+        self.inicializar_matriz(aCT)
+        self.inicializar_matriz(mI)
         
         for i in range(3):
             for j in range(3):
-                a[i][j] = float(getattr(self.ui, f'AO{i}{j}').text())
+                a_txt = getattr(self.ui, f'AO{i}{j}').text().strip()
+                
+                if not a_txt:
+                    self.advertencia()
+                    return
+                
+                a[i][j] = float(a_txt)
         
         det = self.determinante()
         
@@ -172,28 +236,29 @@ class MetodosNumericos(QMainWindow):
         aI = [] 
         b = []
         c = []       
-        self.InicializarMatriz(a)
-        self.InicializarMatriz(aC)
-        self.InicializarMatriz(aCT)
-        self.InicializarMatriz(aI)
+        self.inicializar_matriz(a)
+        self.inicializar_matriz(aC)
+        self.inicializar_matriz(aCT)
+        self.inicializar_matriz(aI)
         
         for i in range(3):
             b.append([0]*3)
             c.append([0]*3)
         
-        a[0][0] = float(self.ui.XEQ1.text())
-        a[0][1] = float(self.ui.YEQ1.text())
-        a[0][2] = float(self.ui.ZEQ1.text())
-        a[1][0] = float(self.ui.XEQ2.text())
-        a[1][1] = float(self.ui.YEQ2.text())
-        a[1][2] = float(self.ui.ZEQ2.text())
-        a[2][0] = float(self.ui.XEQ3.text())
-        a[2][1] = float(self.ui.YEQ3.text())
-        a[2][2] = float(self.ui.ZEQ3.text())
-        
-        c[0][0] = float(self.ui.IEQ1.text())
-        c[1][0] = float(self.ui.IEQ2.text())
-        c[2][0] = float(self.ui.IEQ3.text())
+        for i in range(3):
+            X_txt = getattr(self.ui, f'XEQ{i + 1}').text().strip()
+            Y_txt = getattr(self.ui, f'YEQ{i + 1}').text().strip()
+            Z_txt = getattr(self.ui, f'ZEQ{i + 1}').text().strip()
+            I_txt = getattr(self.ui, f'IEQ{i + 1}').text().strip()            
+            
+            if not X_txt or not Y_txt or not Z_txt:
+                self.advertencia()
+                return
+            
+            a[i][0] = float(X_txt)
+            a[i][1] = float(Y_txt)
+            a[i][2] = float(Z_txt)      
+            c[i][0] = float(I_txt)
         
         diagonales_principales = (
         a[0][0] * a[1][1] * a[2][2] +
