@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'Diseño Parcial II - Métodos NuméricosIiChyc.ui'
+## Form generated from reading UI file 'Diseño Parcial II - Métodos NuméricossspiVn.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.2
 ##
@@ -644,9 +644,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         self.tabWidget_2.setCurrentIndex(0)
-        self.tabWidget_3.setCurrentIndex(2)
+        self.tabWidget_3.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
