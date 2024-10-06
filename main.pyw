@@ -2,7 +2,9 @@ from PySide6.QtWidgets import *
 from formulario import *    
 from PySide6 import *
 import sys
-
+import math
+import numpy as np
+import matplotlib.pyplot as plt
 class MetodosNumericos(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -14,9 +16,12 @@ class MetodosNumericos(QMainWindow):
         self.ui.btnMatrizInversa.clicked.connect(self.determinante)
         self.ui.btnMatrizInversa.clicked.connect(self.matriz_inversa)
         self.ui.btnSistemaDeEcuaciones.clicked.connect(self.sistema_ecuaciones)
+        self.ui.btnIngresarN.clicked.connect(self.actualizar_tabla)
+        self.ui.btnCalcularRegresion.clicked.connect(self.regresion_lineal)
         self.ui.btnLimpiarA.clicked.connect(self.limpiar_matrices_A)
         self.ui.btnLimpiarOM.clicked.connect(self.limpiar_matrices_OM)
         self.ui.btnLimpiarEQ.clicked.connect(self.limpiar_EQ)
+        self.ui.btnLimpiarRegresion.clicked.connect(self.limpiar_regresion)
         self.center()
     
     #Esta función centra el form en la pantalla
@@ -34,6 +39,14 @@ class MetodosNumericos(QMainWindow):
         for i in range(3):
             for j in range(3):
                 lista.append([0]*3)
+    
+    def actualizar_tabla(self):
+        numeroFilas = int(self.ui.txtN.text())
+        self.ui.twIngresoDeDatos.setRowCount(numeroFilas)
+        
+        for fila in range(numeroFilas):
+            for columna in range(2):
+                self.ui.twIngresoDeDatos.setItem(fila, columna, QTableWidgetItem(""))
     
     def advertencia(self, msg):
         dialogo = QMessageBox()
@@ -68,6 +81,13 @@ class MetodosNumericos(QMainWindow):
         self.ui.lblX.setText("x = ")
         self.ui.lblY.setText("y = ")
         self.ui.lblZ.setText("z = ")
+    
+    def limpiar_regresion(self):
+        self.ui.lblFormula.setText("y = ")
+        self.ui.txtN.setText("")
+        self.ui.lwRegresion.clear()
+        self.ui.twIngresoDeDatos.setRowCount(0)
+        self.ui.twRegresion.setRowCount(0)
     
     def sumar_matriz(self):
         a = []
@@ -315,6 +335,149 @@ class MetodosNumericos(QMainWindow):
         self.ui.lblX.setText("x = " + str(b[0][0]))
         self.ui.lblY.setText("y = " + str(b[1][0]))
         self.ui.lblZ.setText("z = " + str(b[2][0]))
+
+    def regresion_lineal(self):
+        x = []
+        y = []
+        media_x = [] 
+        media_y = []
+        media_x_cuadrado = []
+        media_y_cuadrado = []
+        multiplicacion_media = []
+        x_cuadrado = []
+        multiplicacion_xy = []
+        n = self.ui.twIngresoDeDatos.rowCount()
+        
+        for i in range(n):
+            x.append([0])
+            y.append([0])
+            media_x.append([0])
+            media_y.append([0])
+            media_x_cuadrado.append([0])
+            media_y_cuadrado.append([0])
+            multiplicacion_media.append([0])
+            x_cuadrado.append([0])
+            multiplicacion_xy.append([0])
+        
+        for fila in range(n):
+            X_txt = self.ui.twIngresoDeDatos.item(fila, 0)
+            Y_txt = self.ui.twIngresoDeDatos.item(fila, 1)
+                
+            if not X_txt.text() or not Y_txt.text():
+                self.advertencia("Campos vacíos, ingrese los datos correctamente")
+                return
+            
+            try:
+                x[fila] = float(X_txt.text())
+                y[fila] = float(Y_txt.text())
+            except Exception:
+                self.advertencia("Solo se aceptan valores numéricos, ingrese los datos correctamente")
+                return
+        
+        suma_x = round(sum(x), 2)
+        suma_y = round(sum(y), 2)
+        promedio_x = round(suma_x / n, 2)
+        promedio_y = round(suma_y / n, 2)
+        
+        for i in range(n):
+            media_x[i] = round(x[i] - promedio_x, 2)
+            media_y[i] = round(y[i] - promedio_y, 2)
+            
+            media_x_cuadrado[i] = round(media_x[i] ** 2, 2)
+            media_y_cuadrado[i] = round(media_y[i] ** 2, 2)
+            
+            multiplicacion_media[i] = round(media_x[i] * media_y[i],2)
+        
+        suma_media_x_cuadrado = round(sum(media_x_cuadrado) ,2)
+        suma_media_y_cuadrado = round(sum(media_y_cuadrado), 2)
+        suma_multiplicacion_media = round(sum(multiplicacion_media), 2)
+        
+        desviacion_estandar_x = round(math.sqrt(suma_media_x_cuadrado / n), 2)
+        desviacion_estandar_y = round(math.sqrt(suma_media_y_cuadrado / n), 2)
+        covarianza = round(suma_multiplicacion_media / n, 2)
+        r = round(covarianza / (desviacion_estandar_x * desviacion_estandar_y), 2)
+        
+        if r>0:
+            for i in range(n):
+                x_cuadrado[i] = x[i] ** 2
+                multiplicacion_xy[i] = round(x[i] * y[i], 2)
+            
+            suma_x_cuadrado = sum(x_cuadrado)
+            suma_multiplicacion_xy = round(sum(multiplicacion_xy), 2)
+            
+            a = round(((n * suma_multiplicacion_xy) - (suma_x * suma_y)) / ((n * suma_x_cuadrado) - (suma_x ** 2)), 2)
+            b = round(promedio_y - a * promedio_x, 2)
+            
+            self.ui.twRegresion.setColumnCount(9)
+            self.ui.twRegresion.setHorizontalHeaderLabels(["X", "Y", "x - x̅", "y - y̅", "(x - x̅)²", "(y - y̅)²", "(x - x̅)(y - y̅)", "x²", "x*y"])
+            self.ui.twRegresion.setRowCount(n)
+            
+            for i in range(n):
+                self.ui.twRegresion.setItem(i, 0, QTableWidgetItem(str(x[i])))
+                self.ui.twRegresion.setItem(i, 1, QTableWidgetItem(str(y[i])))
+                self.ui.twRegresion.setItem(i, 2, QTableWidgetItem(str(media_x[i])))
+                self.ui.twRegresion.setItem(i, 3, QTableWidgetItem(str(media_y[i])))
+                self.ui.twRegresion.setItem(i, 4, QTableWidgetItem(str(media_x_cuadrado[i])))
+                self.ui.twRegresion.setItem(i, 5, QTableWidgetItem(str(media_y_cuadrado[i])))
+                self.ui.twRegresion.setItem(i, 6, QTableWidgetItem(str(multiplicacion_media[i])))
+                self.ui.twRegresion.setItem(i, 7, QTableWidgetItem(str(x_cuadrado[i])))
+                self.ui.twRegresion.setItem(i, 8, QTableWidgetItem(str(multiplicacion_xy[i])))
+            
+            self.ui.lwRegresion.addItem("∑x = " + str(suma_x))
+            self.ui.lwRegresion.addItem("∑y = " + str(suma_y))
+            self.ui.lwRegresion.addItem("x̅ = " + str(promedio_x))
+            self.ui.lwRegresion.addItem("y̅ = " + str(promedio_y))
+            self.ui.lwRegresion.addItem("∑(x - x̅)² = " + str(suma_media_x_cuadrado))
+            self.ui.lwRegresion.addItem("∑(y - y̅)² = " + str(suma_media_y_cuadrado))
+            self.ui.lwRegresion.addItem("∑(x - x̅)(y - y̅) = " + str(suma_multiplicacion_media))
+            self.ui.lwRegresion.addItem("")
+            self.ui.lwRegresion.addItem("Sx = " + str(desviacion_estandar_x))
+            self.ui.lwRegresion.addItem("Sy = " + str(desviacion_estandar_y))
+            self.ui.lwRegresion.addItem("Sxy = " + str(covarianza))
+            self.ui.lwRegresion.addItem("r = " + str(r) + ", HAY correlación lineal")
+            self.ui.lwRegresion.addItem("")
+            self.ui.lwRegresion.addItem("∑x² = " + str(suma_x_cuadrado))
+            self.ui.lwRegresion.addItem("∑x*y = " + str(suma_multiplicacion_xy))
+            
+            self.ui.lblFormula.setText("Fórmula: y = " + str(a) + "*x + (" + str(b) + ")")
+            
+            x_recta = np.linspace(min(x), max(x), 100)
+            y_recta = a * x_recta + b
+            
+            plt.plot(x_recta, y_recta, color = 'red', label = f'Recta de regresión: y = {a}x + {b}')
+            
+            plt.xlabel('X')
+            plt.ylabel('Y')
+            plt.title('Puntos y recta de regresión')
+            
+            plt.legend()            
+            plt.show() 
+        else:
+            self.ui.twRegresion.setColumnCount(7)
+            self.ui.twRegresion.setHorizontalHeaderLabels(["X", "Y", "x - x̅", "y - y̅", "(x - x̅)²", "(y - y̅)²", "(x - x̅)(y - y̅)"])
+            self.ui.twRegresion.setRowCount(n)
+            
+            for i in range(n):
+                self.ui.twRegresion.setItem(i, 0, QTableWidgetItem(str(x[i])))
+                self.ui.twRegresion.setItem(i, 1, QTableWidgetItem(str(y[i])))
+                self.ui.twRegresion.setItem(i, 2, QTableWidgetItem(str(media_x[i])))
+                self.ui.twRegresion.setItem(i, 3, QTableWidgetItem(str(media_y[i])))
+                self.ui.twRegresion.setItem(i, 4, QTableWidgetItem(str(media_x_cuadrado[i])))
+                self.ui.twRegresion.setItem(i, 5, QTableWidgetItem(str(media_y_cuadrado[i])))
+                self.ui.twRegresion.setItem(i, 6, QTableWidgetItem(str(multiplicacion_media[i])))
+            
+            self.ui.lwRegresion.addItem("∑x = " + str(suma_x))
+            self.ui.lwRegresion.addItem("∑y = " + str(suma_y))
+            self.ui.lwRegresion.addItem("x̅ = " + str(promedio_x))
+            self.ui.lwRegresion.addItem("y̅ = " + str(promedio_y))
+            self.ui.lwRegresion.addItem("∑(x - x̅)² = " + str(suma_media_x_cuadrado))
+            self.ui.lwRegresion.addItem("∑(y - y̅)² = " + str(suma_media_y_cuadrado))
+            self.ui.lwRegresion.addItem("∑(x - x̅)(y - y̅) = " + str(suma_multiplicacion_media))
+            self.ui.lwRegresion.addItem("")
+            self.ui.lwRegresion.addItem("Sx = " + str(desviacion_estandar_x))
+            self.ui.lwRegresion.addItem("Sy = " + str(desviacion_estandar_y))
+            self.ui.lwRegresion.addItem("Sxy = " + str(covarianza))
+            self.ui.lwRegresion.addItem("r = " + str(r) + ", NO hay correlación lineal")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
