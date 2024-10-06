@@ -35,11 +35,11 @@ class MetodosNumericos(QMainWindow):
             for j in range(3):
                 lista.append([0]*3)
     
-    def advertencia(self):
+    def advertencia(self, msg):
         dialogo = QMessageBox()
         dialogo.setIcon(QMessageBox.Warning)
         dialogo.setWindowTitle("Advertencia")
-        dialogo.setText("Complete todos los campos")
+        dialogo.setText(msg)
         dialogo.setStandardButtons(QMessageBox.Ok)
         dialogo.exec()
     
@@ -77,7 +77,6 @@ class MetodosNumericos(QMainWindow):
         self.inicializar_matriz(b)
         self.inicializar_matriz(c)
         
-        validar = True
         
         for i in range(3):
             for j in range(3):
@@ -85,17 +84,20 @@ class MetodosNumericos(QMainWindow):
                 b_txt = getattr(self.ui, f'AB{i}{j}').text().strip()
                 
                 if not a_txt or not b_txt:
-                    self.advertencia()
+                    self.advertencia("Campos vacíos, ingrese los datos correctamente")
                     return
                 
-                a[i][j] = float(a_txt)
-                b[i][j] = float(b_txt)
-
-        if(validar):
-            for i in range(3):
-                for j in range(3):
-                    c[i][j] = a[i][j] + b[i][j]
-                    getattr(self.ui, f'RS{i}{j}').setText(str(c[i][j]))
+                try:
+                    a[i][j] = float(a_txt)
+                    b[i][j] = float(b_txt)
+                except Exception:
+                    self.advertencia("Las matrices solo aceptan valores numéricos")
+                    return
+        
+        for i in range(3):
+            for j in range(3):
+                c[i][j] = a[i][j] + b[i][j]
+                getattr(self.ui, f'RS{i}{j}').setText(str(c[i][j]))
     
     def restar_matriz(self):
         a = []
@@ -105,7 +107,6 @@ class MetodosNumericos(QMainWindow):
         self.inicializar_matriz(b)
         self.inicializar_matriz(c)
         
-        validar = True
         
         for i in range(3):
             for j in range(3):
@@ -113,17 +114,20 @@ class MetodosNumericos(QMainWindow):
                 b_txt = getattr(self.ui, f'AB{i}{j}').text().strip()
                 
                 if not a_txt or not b_txt:
-                    self.advertencia()
+                    self.advertencia("Campos vacíos, ingrese los datos correctamente")
                     return  
                 
-                a[i][j] = float(a_txt)
-                b[i][j] = float(b_txt)
+                try:
+                    a[i][j] = float(a_txt)
+                    b[i][j] = float(b_txt)
+                except Exception:
+                    self.advertencia("Las matrices solo aceptan valores numéricos")
+                    return
         
-        if(validar):
-            for i in range(3):
-                for j in range(3):
-                    c[i][j] = a[i][j] + (-1) * b[i][j]
-                    getattr(self.ui, f'RR{i}{j}').setText(str(c[i][j]))
+        for i in range(3):
+            for j in range(3):
+                c[i][j] = a[i][j] + (-1) * b[i][j]
+                getattr(self.ui, f'RR{i}{j}').setText(str(c[i][j]))
     
     def multiplicar_matriz(self):
         a = []
@@ -133,26 +137,28 @@ class MetodosNumericos(QMainWindow):
         self.inicializar_matriz(b)
         self.inicializar_matriz(c)
         
-        validar = True
-        
         for i in range(3):
             for j in range(3):
                 a_txt = getattr(self.ui, f'AA{i}{j}').text().strip()
                 b_txt = getattr(self.ui, f'AB{i}{j}').text().strip()
                 
                 if not a_txt or not b_txt:
-                    self.advertencia()
+                    self.advertencia("Campos vacíos, ingrese los datos correctamente")
                     return  
                 
-                a[i][j] = float(a_txt)
-                b[i][j] = float(b_txt)
+                try:
+                    a[i][j] = float(a_txt)
+                    b[i][j] = float(b_txt)
+                except Exception:
+                    self.advertencia("Las matrices solo aceptan valores numéricos")
+                    return
+                
         
-        if(validar):
-            for i in range(3):
-                for j in range(3):
-                    for k in range(3):
-                        c[i][j] += a[i][k] * b[k][j]
-                        getattr(self.ui, f'RM{i}{j}').setText(str(c[i][j]))
+        for i in range(3):
+            for j in range(3):
+                for k in range(3):
+                    c[i][j] += a[i][k] * b[k][j]
+                    getattr(self.ui, f'RM{i}{j}').setText(str(c[i][j]))
     
     #Funciones Para Calcular Matriz Inversa
     def determinante(self):
@@ -166,7 +172,11 @@ class MetodosNumericos(QMainWindow):
                 if not a_txt:
                     return
                 
-                a[i][j] = float(a_txt)
+                try:
+                    a[i][j] = float(a_txt)
+                except Exception:
+                    self.advertencia("Las matrices solo aceptan valores numéricos")
+                    return
         
         det = self.determinante()
         
@@ -200,10 +210,14 @@ class MetodosNumericos(QMainWindow):
                 a_txt = getattr(self.ui, f'AO{i}{j}').text().strip()
                 
                 if not a_txt:
-                    self.advertencia()
+                    self.advertencia("Campos vacíos, ingrese los datos correctamente")
                     return
                 
-                a[i][j] = float(a_txt)
+                try:
+                    a[i][j] = float(a_txt)
+                except Exception:
+                    self.advertencia("Las matrices solo aceptan valores numéricos")
+                    return
         
         det = self.determinante()
         
@@ -252,13 +266,17 @@ class MetodosNumericos(QMainWindow):
             I_txt = getattr(self.ui, f'IEQ{i + 1}').text().strip()            
             
             if not X_txt or not Y_txt or not Z_txt:
-                self.advertencia()
+                self.advertencia("Campos vacíos, ingrese los datos correctamente")
                 return
             
-            a[i][0] = float(X_txt)
-            a[i][1] = float(Y_txt)
-            a[i][2] = float(Z_txt)      
-            c[i][0] = float(I_txt)
+            try:
+                a[i][0] = float(X_txt)
+                a[i][1] = float(Y_txt)
+                a[i][2] = float(Z_txt)      
+                c[i][0] = float(I_txt)
+            except Exception:
+                self.advertencia("Las matrices solo aceptan valores numéricos")
+                return
         
         diagonales_principales = (
         a[0][0] * a[1][1] * a[2][2] +
