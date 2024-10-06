@@ -337,6 +337,10 @@ class MetodosNumericos(QMainWindow):
         self.ui.lblZ.setText("z = " + str(b[2][0]))
 
     def regresion_lineal(self):
+        self.ui.lblFormula.setText("y = ")
+        self.ui.lwRegresion.clear()
+        self.ui.twRegresion.setRowCount(0)
+        
         x = []
         y = []
         media_x = [] 
